@@ -1,0 +1,15 @@
+services:
+  app:
+    image: rust:1.87.0-slim-bookworm
+    # environment:
+    # - CARGO_TARGET_DIR=/tmp/target
+    volumes:
+      - ../app:/app
+      # - build-cache:/tmp/target
+      - cargo-cache:/usr/local/cargo/registry
+    working_dir: /app
+    tty: true
+
+volumes:
+  build-cache:
+  cargo-cache:

@@ -1,0 +1,54 @@
+# Ethereum Transaction Signer
+
+## Docker コンテナ起動
+
+```sh
+bin/run.sh
+```
+
+## ビルド
+
+```sh
+bin/build.sh
+```
+
+## 実行
+
+### 環境変数
+
+- 直接環境変数をセット、もしくは .env.sample を参考に .env ファイルを用意する。
+
+### パラメータJSON
+
+- params.json.sample を参考に params.json ファイルを用意する。
+- nonce, value, gas_limit は 10進数の数値、もしくは16進数の文字列を設定可能。
+- 実行時の第一引数でファイルを指定する。
+
+### 実行
+
+秘密鍵をファイルに残すのは危険なため実行時に渡す。
+
+```sh
+cd app/
+
+PRIVATE_KEY=aaa \
+  ./target/debug/ethereum-transaction-signer params.json
+```
+
+## ブロードキャストしてテスト
+
+params に出力されたトランザクションデータを渡す。
+RPCエンドポイントは一例。
+
+```sh
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "eth_sendRawTransaction",
+    "params": ["0x02..."], 
+    "id": 1
+  }' \
+  https://ethereum-sepolia-rpc.publicnode.com
+```

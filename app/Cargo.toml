@@ -1,0 +1,16 @@
+[package]
+name = "ethereum-transaction-signer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+config = "0.15.11"
+dotenv = "0.15.0"
+ethereum = "=0.15.0"
+ethereum-types = "=0.14"
+hex = "0.4.3"
+k256 = "0.13.4"
+rlp = "=0.5.2"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+thiserror = "2.0.12"

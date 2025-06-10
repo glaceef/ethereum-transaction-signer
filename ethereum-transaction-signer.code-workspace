@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "path": "app"
+    }
+  ],
+  "settings": {
+    "rust-analyzer.cargo.extraArgs": ["--target-dir", "target/rust-analyzer"]
+  },
+  "extensions": {
+    "recommendations": ["rust-lang.rust-analyzer"]
+  }
+}
