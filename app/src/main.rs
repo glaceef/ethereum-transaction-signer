@@ -42,7 +42,7 @@ fn main() -> Result<()> {
     // 秘密鍵から SigningKey 作成
     let signing_key = SigningKey::from_slice(&private_key_bytes)?;
 
-    // 署名とrecovery_idを同時に取得
+    // 署名と recovery_id を取得
     let (signature, recovery_id) = signing_key.sign_prehash_recoverable(&transaction_hash.0)?;
 
     // トランザクションデータを作成
@@ -65,7 +65,7 @@ fn main() -> Result<()> {
     // 署名済みトランザクションをRLPエンコード
     let rlp_encoded_transaction_bytes = rlp::encode(&transaction);
 
-    // Type 2 プレフィックス付きの最終形式
+    // Type 2 プレフィックスを付与
     let signed_transaction = {
         let mut buf = vec![0x02];
         buf.extend_from_slice(&rlp_encoded_transaction_bytes);
